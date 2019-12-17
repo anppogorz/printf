@@ -1,13 +1,13 @@
-void    ft_treatment(const char c)
+void    ft_treatment(const char c, va_list ap)
 {
     if (c == 'c')
-        ft_treatment_c();
+        ft_treatment_c(va_arg(ap, char));
     if (c == 's')
-        ft_treatment_s();
+        ft_treatment_s(va_arg(ap, char *));
     if (c == 'p')
-        ft_treatment_p();
+        ft_treatment_p(va_arg(ap, void *));
     if (c == 'd')
-        ft_treatment_d();
+        ft_treatment_d(va_arg(ap, int));
     if (c == 'i')
         ft_treatment_i();
     if (c == 'u')
@@ -18,35 +18,23 @@ void    ft_treatment(const char c)
         ft_treatment_X();
 }
 
-void    ft_treatment_c()
+void    ft_treatment_c(char c)
 {
-    char c;
-
-    c = va_arg(va, char);
     ft_putchar(c);
 }
 
-void    ft_treatment_s()
+void    ft_treatment_s(char *str)
 {
-    char *s;
-
-    s = va_arg(va, char *);
-    ft_putstr(s);
+    ft_putstr(str);
 }
 
-void    ft_treatment_p()
+void    ft_treatment_p(void *ptr)
 {
-    void *p;
-
-    p = va_arg(va, void *);
-    ft_print_mem(p);
+    ft_print_mem(ptr);
 }
 
-void    ft_treatment_d();
+void    ft_treatment_d(int i);
 {
-    int i;
-
-    i = va_arg(va, int);
     ft_putnbr(i);
 }
 

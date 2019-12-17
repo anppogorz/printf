@@ -10,7 +10,7 @@ int ft_printf(const char *format, ...)
 			if (*format == '%')
 			{
 				format++;
-				ft_treatment(*format);
+				ft_treatment(*format, ap);
 				format++;
 
 			}
