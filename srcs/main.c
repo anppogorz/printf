@@ -3,43 +3,42 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char    *ft_treatment_x(unsigned int u)
+void	ft_putchar_fd(char c, int fd)
 {
-    char *base;
-    char *nbr_final;
-    char base_conv[100];
-    int i;
-    int j;
+    if (fd < 0)
+        return ;
+    write(fd, &c, 1);
+}
 
-    if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
-        return (NULL);
-    base = "0123456789abcdef";
-    i = 0;
-    j = 0;
-    if (u == 0)
-        return ("0");
-    while (u > 0)
+void	ft_putnbr_fd(int n, int fd)
+{
+    if (fd < 0)
+        return ;
+    if (n == -2147483648)
     {
-        base_conv[i] = u % 16;
-        u = u / 16;
-        i++;
+        ft_putchar_fd('-', fd);
+        ft_putchar_fd('2', fd);
+        n = 147483648;
     }
-    while (i > 0)
+    if (n < 0)
     {
-        nbr_final[j] = base[base_conv[i - 1]];
-        j++;
-        i--;
+        ft_putchar_fd('-', fd);
+        n = -1 * n;
     }
-    nbr_final[j] = '\0';
-    return (nbr_final);
+    if (n > 9)
+    {
+        ft_putnbr_fd((n / 10), fd);
+        ft_putchar_fd(((n % 10) + 48), fd);
+    }
+    if (n < 10)
+        ft_putchar_fd((n + 48), fd);
 }
 
 int main(int argc, char **argv)
 {
-    unsigned int i;
+    char *str;
 
-    i = 0;
-    printf("Ceci est printf: %x\n", 1362485);
-    printf("Ceci est treatment: %s\n", ft_treatment_x(1362485));
+    str = "abcde";
+    printf("%3.s",str);
     return (0);
 }

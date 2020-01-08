@@ -17,4 +17,12 @@
 # include <stdint.h>
 # include <stdlib.h>
 
+typedef struct  s_list
+{
+    char *first;
+    char *second;
+    char *third;
+    char *fourth;
+}               t_list;
+
 #endif
