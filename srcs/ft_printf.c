@@ -45,6 +45,16 @@ int     ft_check_format(const char *format)
     if (*format != '.' && *format != )
 }
 
+char    *ft_pass_nbr(const char *format)
+{
+    char *str;
+
+    str = strdup(format);
+    while (*str >= 0 && *str <= 9)
+        str++;
+    return (str);
+}
+
 t_list  ft_check_flags(const char *format)
 {
     t_list flags;
