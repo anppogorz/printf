@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2019/12/17 15:31:23 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/09 08:31:16 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int ft_printf(const char *format, ...)
 			{
 				format++;
                 flags = ft_check_flags(*format);
-				ft_treatment(*format, ap);
+                //if (ft_check_format(flags) == -1)
+                 //   return (ft_free_flags(flags));
+                format = ft_skip_flags(format);
+				ft_display(ft_treatment(*format, ap), flags);
 				format++;
-
 			}
 			putchar(*format);
 			format++;
@@ -34,23 +36,66 @@ int ft_printf(const char *format, ...)
 	va_end (ap);
 }
 
-int     ft_check_format(const char *format)
+void    ft_display(char *str , t_list flags)
 {
-    if (*format != '0' && *format != '-')
-        return -1;
-    format++;
-    if (*format != '*' && (*format > 9 || *format < 0))
-        return -1;
-    format = ft_pass_nbr(format);
-    if (*format != '.' && *format != )
+    int i;
+
+    if (flags.first == '0')
+        i = ft_atoi(flags.second) - ft_strlen(str);
+    while (i > 0)
+    {
+        ft_putchar_fd('0', 1);
+        i--;
+    }
+    ft_putstr_fd(str, 1);
+    if (flags.first == '-')
+        i = ft_atoi(flags.second) - ft_strlen(str);
+    while (i > 0)
+    {
+        ft_putchar_fd('-', 1);
+        i--;
+    }
+    ft_putstr_fd(str, 1);
+}
+
+const char    *ft_skip_flags(const char *s1)
+{
+    while (*s1 != 'd' && *s1 != 'p' && *s1 != 's' && *s1 != 'c' && *s1 != 'u' && *s1 != 'i' && *s1 != 'x' && *s1 != 'X')
+        s1++;
+    return (s1);
+}
+
+int     ft_check_format(t_list flags)
+{
+    
+}
+char	*ft_strdup_num(const char *s1)
+{
+    int		i;
+    char	*s2;
+
+    i = 0;
+    while (s1[i] >= '0' && s1[i] <= '9')
+        i++;
+    s2 = (char *)malloc(sizeof(char) * (i + 1));
+    if (s2 == 0)
+        return (NULL);
+    i = 0;
+    while (s1[i] >= '0' && s1[i] <= '9')
+    {
+        s2[i] = s1[i];
+        i++;
+    }
+    s2[i] = '\0';
+    return (s2);
 }
 
 char    *ft_pass_nbr(const char *format)
 {
     char *str;
 
-    str = strdup(format);
-    while (*str >= 0 && *str <= 9)
+    str = ft_strdup(format);
+    while (*str >= '0' && *str <= '9')
         str++;
     return (str);
 }
@@ -65,16 +110,21 @@ t_list  ft_check_flags(const char *format)
         format++;
     }
     if (*format == '*')
-        flags.second = *format;
-    else
-        flags.second = ft_atoi(format);
-    format = ft_pass_nbr(format);
-    flags.third = *format;
-    if (*format == '.')
+    {
+        flags.second = ft_strdup("*");
         format++;
-    if (*format == '*')
-        flags.fourth = *format;
+    }
     else
-        flags.fourth = ft_atoi(*format);
+        flags.second = ft_strdup_num(format);
+    format = ft_pass_nbr(format);
+    if (*format == '.')
+    {
+        flags.third = ".";
+        format++;
+    }
+    if (*format == '*')
+        flags.fourth = ft_strdup("*");
+    else
+        flags.fourth = ft_strdup_num(format);
     return(flags);
 }

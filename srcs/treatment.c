@@ -10,43 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int    ft_treatment(const char c, va_list ap)
+char    *ft_treatment(const char c, va_list ap)
 {
+    char *str;
+
+    str = NULL;
     if (c == 'c')
-        return (ft_treatment_c(va_arg(ap, char)));
+        str = (ft_treatment_c(va_arg(ap, char)));
     if (c == 's')
-        return (ft_treatment_s(va_arg(ap, char *)));
+        str = (ft_treatment_s(va_arg(ap, char *)));
     if (c == 'p')
-        return (ft_treatment_p(va_arg(ap, void *)));
+        str = (ft_treatment_p(va_arg(ap, void *)));
     if (c == 'd')
-        return (ft_treatment_d(va_arg(ap, int)));
+        str = (ft_treatment_d(va_arg(ap, int)));
     if (c == 'i')
-        return (ft_treatment_i(va_arg(ap, int)));
+        str = (ft_treatment_i(va_arg(ap, int)));
     if (c == 'u')
-        return (ft_treatment_u(va_arg(ap, unsigned int)));
+        str = (ft_treatment_u(va_arg(ap, unsigned int)));
     if (c == 'x')
-        return (ft_treatment_x(va_arg(ap, unsigned int)));
+        str = (ft_treatment_x(va_arg(ap, unsigned int)));
     if (c == 'X')
-        return (ft_treatment_X(va arg(ap, unsigned int)));
-    return (0);
+        str = (ft_treatment_X(va arg(ap, unsigned int)));
+    return (str);
 }
 
-int     ft_c(char c)
+char    *ft_c(char c)
 {
-    ft_putchar_fd(c, 1);
-    return (1);
+    char *str;
+
+    if (!(str = (char *)malloc(sizeof(char) * 2)))
+        return (NULL);
+    str[0] = c;
+    str[1] = '\0';
+    return (str);
 }
 
-int     ft_s(char *str)
+char    *ft_s(char *str)
 {
-    ft_putstr_fd(str, 1);
-    return (ft_strlen(str));
+    return (str);
 }
 
-int     ft_p(void *ptr)
+char    *ft_p(void *ptr)
 {
-    ft_putstr_fd (ft_treatment_p, 1)
-    return (ft_strlen(ft_treatment_p));
+    return (ft_treatment_p(ptr));
 }
 
 char    *ft_treatment_p(void *ptr)
@@ -84,39 +90,24 @@ char    *ft_treatment_p(void *ptr)
     return (nbr_final);
 }
 
-int     ft_d(int i)
+char    *ft_d(int i)
 {
-    ft_putnbr_fd(i, 1);
-    return (ft_strlen_nbr(i));
+    return (ft_itoa(i));
 }
 
-int     ft_i(int i)
+char    *ft_i(int i)
 {
-    ft_putnbr_fd(i, 1);
-    return (ft_strlen_nbr(i));
+    return (ft_itoa(i));
 }
 
-int     ft_u(unsigned int u)
+char    *ft_u(unsigned int u)
 {
-    ft_putnbr_fd_u(u, 1);
-    return (ft_strlen_nbr_u(u))
+    return (ft_itoa_u(u))
 }
 
-void	ft_putnbr_fd_u(unsigned int n, int fd)
+char    *ft_x(unsigned int u)
 {
-    if (n > 9)
-    {
-        ft_putnbr_fd_u((n / 10), fd);
-        ft_putchar_fd(((n % 10) + 48), fd);
-    }
-    if (n < 10)
-        ft_putchar_fd((n + 48), fd);
-}
-
-int     ft_x(unsigned int u)
-{
-    ft_putstr_fd(ft_treatment_x(u), 1);
-    return(ft_strlen(ft_treatment_x(u)));
+    return(ft_treatment_x(u));
 }
 
 char    *ft_treatment_x(unsigned int u)
@@ -150,10 +141,9 @@ char    *ft_treatment_x(unsigned int u)
     return (nbr_final);
 }
 
-int     ft_X(unsigned int u)
-{
-    ft_putstr_fd(ft_treatment_X(u), 1);
-    return(ft_strlen(ft_treatment_X(u)));
+char    *ft_X(unsigned int u)
+{;
+    return (ft_treatment_X(u));
 }
 
 char    *ft_treatment_X(unsigned int u)
