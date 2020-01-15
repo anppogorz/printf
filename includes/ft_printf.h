@@ -23,6 +23,7 @@ typedef struct  s_list
     char *second;
     char *third;
     char *fourth;
+    char option;
 }               t_list;
 
 char    *ft_treatment(const char c, va_list ap);

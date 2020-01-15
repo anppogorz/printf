@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/09 08:31:16 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/15 07:24:57 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int ft_printf(const char *format, ...)
 			if (*format == '%')
 			{
 				format++;
+				flags.option = *format;
                 flags = ft_check_flags(*format);
                 //if (ft_check_format(flags) == -1)
-                 //   return (ft_free_flags(flags));
+                    //return (ft_free_flags(flags));
                 format = ft_skip_flags(format);
 				ft_display(ft_treatment(*format, ap), flags);
 				format++;
@@ -34,28 +35,6 @@ int ft_printf(const char *format, ...)
 			format++;
 		}
 	va_end (ap);
-}
-
-void    ft_display(char *str , t_list flags)
-{
-    int i;
-
-    if (flags.first == '0')
-        i = ft_atoi(flags.second) - ft_strlen(str);
-    while (i > 0)
-    {
-        ft_putchar_fd('0', 1);
-        i--;
-    }
-    ft_putstr_fd(str, 1);
-    if (flags.first == '-')
-        i = ft_atoi(flags.second) - ft_strlen(str);
-    while (i > 0)
-    {
-        ft_putchar_fd('-', 1);
-        i--;
-    }
-    ft_putstr_fd(str, 1);
 }
 
 const char    *ft_skip_flags(const char *s1)
@@ -67,7 +46,7 @@ const char    *ft_skip_flags(const char *s1)
 
 int     ft_check_format(t_list flags)
 {
-    
+
 }
 char	*ft_strdup_num(const char *s1)
 {

@@ -26,6 +26,6 @@ void	ft_putstr_fd(char *s, int fd)
 
 int main(void)
 {
-    ft_putstr_fd("1234", 1);
+    printf("%-12.8d", 123456);
     return (0);
 }
