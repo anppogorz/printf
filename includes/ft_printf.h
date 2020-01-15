@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:10 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/15 15:11:46 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:21:25 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ int     ft_printf(const char *format, ...);
 char	*ft_itoa_u(unsigned int n);
 const char    *ft_skip_flags(const char *s1);
 t_list  ft_check_flags(const char *format);
+void    ft_display_d(char *str, int car_numbers, t_list flags);
+void    ft_display_d_precision(char *str, int car_numbers, int precision, t_list flags);
+void    ft_display_s(char *str, int car_numbers, t_list flags);
+void    ft_display_s_precision(char *str, int car_numbers, int precision, t_list flags);
+
 
 
 
