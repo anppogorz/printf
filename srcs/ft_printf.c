@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/15 07:24:57 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:11:46 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ int ft_printf(const char *format, ...)
                 //if (ft_check_format(flags) == -1)
                     //return (ft_free_flags(flags));
                 format = ft_skip_flags(format);
-				ft_display(ft_treatment(*format, ap), flags);
+				ft_display((ft_treatment(*format, ap)), flags);
 				format++;
 			}
-			putchar(*format);
+			ft_putchar_fd(*format, 1);
 			format++;
 		}
 	va_end (ap);
+	return (0);
 }
 
 const char    *ft_skip_flags(const char *s1)

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
 void    ft_display(char *str, t_list flags)
 {
     int car_numbers;
@@ -19,13 +21,13 @@ void    ft_display(char *str, t_list flags)
         car_numbers = ft_atoi(flags.second) - ft_strlen(str);
     if (flags.third == '.')
         precision = ft_atoi(flags.fourth) - ft_strlen(str);
-    if (flags.option == d)
+    if (flags.option == 'd')
         ft_display_d(str, car_numbers);
-    if (flags.option == d)
+    if (flags.option == 'd')
         ft_display_d_precision(str, car_numbers, precision);
-    if (flags.option == s)
+    if (flags.option == 's')
         ft_display_s(str, car_numbers);
-    if (flags.option == s && (precision > 0 && precision < ft_strlen(str)))
+    if (flags.option == 's' && (precision > 0 && precision < ft_strlen(str)))
         ft_display_s_precision(str, car_numbers, precision);
 }
 

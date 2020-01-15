@@ -6,9 +6,11 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:28 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/15 11:38:24 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:04:49 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 char    *ft_treatment(const char c, va_list ap)
 {
@@ -16,21 +18,21 @@ char    *ft_treatment(const char c, va_list ap)
 
     str = NULL;
     if (c == 'c')
-        str = (ft_treatment_c(va_arg(ap, char)));
+        str = (ft_c(va_arg(ap, char)));
     if (c == 's')
-        str = (ft_treatment_s(va_arg(ap, char *)));
+        str = (ft_s(va_arg(ap, char *)));
     if (c == 'p')
-        str = (ft_treatment_p(va_arg(ap, void *)));
+        str = (ft_p(va_arg(ap, void *)));
     if (c == 'd')
-        str = (ft_treatment_d(va_arg(ap, int)));
+        str = (ft_d(va_arg(ap, int)));
     if (c == 'i')
-        str = (ft_treatment_i(va_arg(ap, int)));
+        str = (ft_i(va_arg(ap, int)));
     if (c == 'u')
-        str = (ft_treatment_u(va_arg(ap, unsigned int)));
+        str = (ft_u(va_arg(ap, unsigned int)));
     if (c == 'x')
-        str = (ft_treatment_x(va_arg(ap, unsigned int)));
+        str = (ft_x(va_arg(ap, unsigned int)));
     if (c == 'X')
-        str = (ft_treatment_X(va arg(ap, unsigned int)));
+        str = (ft_X(va_arg(ap, unsigned int)));
     return (str);
 }
 
