@@ -35,7 +35,8 @@ char    *ft_treatment_p(void *ptr)
     base = "0123456789abcdef";
     i = 0;
     j = 2;
-    nbr = (uintptr_t)ptr;k
+    nbr = (uintptr_t)ptr;
+    if (nbr == 0)
         return ("0x0");
     nbr_final[0] = '0';
     nbr_final[1] = 'x';
