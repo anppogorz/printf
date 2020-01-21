@@ -1,12 +1,12 @@
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-char    *ft_c(char c)
+char    *ft_c(int i)
 {
     char *str;
 
     if (!(str = (char *)malloc(sizeof(char) * 2)))
         return (NULL);
-    str[0] = c;
+    str[0] = i;
     str[1] = '\0';
     return (str);
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "../includes/ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -24,8 +25,18 @@ void	ft_putstr_fd(char *s, int fd)
     }
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-    printf("%-12.8d", 123456);
+    (void)argc;
+    (void)argv;
+    char *str;
+    void *p;
+    unsigned int i;
+
+    str = "abcdef";
+    p = str;
+
+    ft_printf("Ceci est ft_printf: %3p\n", p);
+    printf("ceci est printf: %p", p);
     return (0);
 }

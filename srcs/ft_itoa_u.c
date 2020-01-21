@@ -6,9 +6,11 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 10:41:00 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/14 10:41:02 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/21 06:50:07 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/ft_printf.h"
 
 static int	ft_count(long long nbr)
 {
@@ -72,8 +74,7 @@ char		*ft_itoa_u(unsigned int n)
 
     nbr = n;
     i = ft_count(nbr);
-    str = malloc(sizeof(char) * (i + 1));
-    if (str == 0)
+    if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
         return (NULL);
     if (nbr == 0)
         str[0] = '0';

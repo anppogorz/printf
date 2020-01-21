@@ -6,34 +6,38 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/15 15:04:49 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/21 07:00:23 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void    ft_display(char *str, t_list flags)
+void    ft_display(char *str, p_list flags)
 {
     int car_numbers;
     int precision;
 
-    precision = 0;
-    car_numbers = 0;
+    precision = -1;
+    car_numbers = -1;
     if (flags.second)
-        car_numbers = ft_atoi(flags.second) - ft_strlen(str);
+        car_numbers = ft_atoi(flags.second);
     if (flags.third == '.')
-        precision = ft_atoi(flags.fourth) - ft_strlen(str);
-    if (flags.option == 'd')
-        ft_display_d(str, car_numbers, flags);
-    if (flags.option == 'd')
+        precision = ft_atoi(flags.fourth);
+    if (flags.second && (precision > 0))
+        car_numbers = car_numbers - precision;
+   // printf("precision = %d\n", precision);
+    //printf("longueur = %d\n", car_numbers);
+    //if (flags.option == 'd')
+        //ft_display_d(str, car_numbers, flags);
+    if (flags.option == 'd' || flags.option == 'u' || flags.option == 'x' || flags.option == 'X')
         ft_display_d_precision(str, car_numbers, precision, flags);
-    if (flags.option == 's')
+    if (flags.option == 's' || flags.option == 'p' || flags.option == 'c')
         ft_display_s(str, car_numbers, flags);
-    if (flags.option == 's' && (precision > 0 && precision < ft_strlen(str)))
+    if ((flags.option == 's' || flags.option == 'p' || flags.option == 'c') && (precision > 0 || car_numbers > 0))
         ft_display_s_precision(str, car_numbers, precision, flags);
 }
 
-void    ft_display_d(char *str, int car_numbers, t_list flags)
+void    ft_display_d(char *str, int car_numbers, p_list flags)
 {
     char c;
 
@@ -61,7 +65,7 @@ void    ft_display_d(char *str, int car_numbers, t_list flags)
     }
 }
 
-void    ft_display_d_precision(char *str, int car_numbers, int precision, t_list flags)
+void    ft_display_d_precision(char *str, int car_numbers, int precision, p_list flags)
 {
         if (flags.first == '-')
         {
@@ -94,7 +98,7 @@ void    ft_display_d_precision(char *str, int car_numbers, int precision, t_list
         }
 }
 
-void    ft_display_s(char *str, int car_numbers, t_list flags)
+void    ft_display_s(char *str, int car_numbers, p_list flags)
 {
     if (flags.first == '-')
     {
@@ -116,17 +120,17 @@ void    ft_display_s(char *str, int car_numbers, t_list flags)
     }
 }
 
-void    ft_display_s_precision(char *str, int car_numbers, int precision, t_list flags)
+void    ft_display_s_precision(char *str, int car_numbers, int precision, p_list flags)
 {
         if (flags.first == '-')
         {
-            while (precision > 0)
+            while (precision > 0 && *str != '\0')
             {
                 ft_putchar_fd(*str, 1);
                 precision--;
                 str++;
             }
-            while (car_numbers > 0)
+            while ((car_numbers) > 0)
             {
                 ft_putchar_fd(' ', 1);
                 car_numbers--;
@@ -139,7 +143,7 @@ void    ft_display_s_precision(char *str, int car_numbers, int precision, t_list
                 ft_putchar_fd(' ', 1);
                 car_numbers--;
             }
-            while (precision > 0)
+            while (precision > 0 && *str != '\0')
             {
                 ft_putchar_fd(*str, 1);
                 precision--;
