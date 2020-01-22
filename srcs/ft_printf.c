@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/21 08:22:00 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:56:08 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_printf(const char *format, ...)
 	va_start (ap, format);
 	while (*format != '\0')
 		{
-			if (*format == '%')
+	        while (*format == '%')
 			{
 				format++;
 				flags.option = *format;
@@ -31,11 +31,11 @@ int ft_printf(const char *format, ...)
                 flags.option = *format;
                 flags = ft_check_stars(flags, ap);
 				ft_display((ft_treatment(*format, ap)), flags);
-				printf("first : %c\n", flags.first);
+				/*printf("first : %c\n", flags.first);
                 printf("second : %s\n", flags.second);
                 printf("third : %c\n", flags.third);
                 printf("fourth : %s\n", flags.fourth);
-                printf("option : %c\n", flags.option);
+                printf("option : %c\n", flags.option);*/
 				format++;
 			}
 			ft_putchar_fd(*format, 1);

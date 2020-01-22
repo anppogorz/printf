@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     str = "abcdef";
     p = str;
 
-    ft_printf("Ceci est ft_printf: %003.12d\n", 12);
-    printf("ceci est printf: %003.12d", 12);
+    ft_printf("%--012.30d%d\n" , 123456789, 12);
+    printf("%--012.30d%d" , 123456789, 12);
     return (0);
 }

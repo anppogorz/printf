@@ -59,7 +59,8 @@ void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
+int     ft_value_precision(p_list flags, char *str);
+int     ft_value_longueur(p_list flags, char *str, int precision);
 
 
 
