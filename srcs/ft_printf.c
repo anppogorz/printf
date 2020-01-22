@@ -29,12 +29,13 @@ int ft_printf(const char *format, ...)
                     //return (ft_free_flags(flags));
                 format = ft_skip_flags(format);
                 flags.option = *format;
-				ft_display((ft_treatment(*format, ap)), flags);/*
+                flags = ft_check_stars(flags, ap);
+				ft_display((ft_treatment(*format, ap)), flags);
 				printf("first : %c\n", flags.first);
                 printf("second : %s\n", flags.second);
                 printf("third : %c\n", flags.third);
                 printf("fourth : %s\n", flags.fourth);
-                printf("option : %c\n", flags.option);*/
+                printf("option : %c\n", flags.option);
 				format++;
 			}
 			ft_putchar_fd(*format, 1);
@@ -42,6 +43,15 @@ int ft_printf(const char *format, ...)
 		}
 	va_end (ap);
 	return (0);
+}
+
+p_list  ft_check_stars(p_list flags, va_list ap)
+{
+    if (ft_strncmp(flags.second, "*", 1) == 0)
+        flags.second = ft_itoa(va_arg(ap, int));
+    if (ft_strncmp(flags.fourth, "*", 1) == 0)
+        flags.fourth = ft_itoa(va_arg(ap, int));
+    return (flags);
 }
 
 const char    *ft_skip_flags(const char *s1)
@@ -88,7 +98,7 @@ p_list  ft_check_flags(const char *format, p_list flags)
     flags.second = "\0";
     flags.third = 48;
     flags.fourth = "\0";
-    if (*format == '-' || *format == '0')
+    while (*format == '-' || *format == '0')
     {
         flags.first = *format;
         format++;

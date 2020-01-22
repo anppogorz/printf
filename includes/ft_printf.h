@@ -17,9 +17,9 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "../libft/libft.h"
+# include <unistd.h>
 
-typedef struct  prtinf_list
+typedef struct  printf_list
 {
     char first;
     char *second;
@@ -52,6 +52,15 @@ void    ft_display_d(char *str, int car_numbers, p_list flags);
 void    ft_display_d_precision(char *str, int car_numbers, int precision, p_list flags);
 void    ft_display_s(char *str, int car_numbers, p_list flags);
 void    ft_display_s_precision(char *str, int car_numbers, int precision, p_list flags);
+p_list  ft_check_stars(p_list flags, va_list ap);
+int			ft_atoi(const char *str);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
+
 
 
 

@@ -50,6 +50,7 @@ int     ft_strlen_nbr(int i)
 {
     int count;
 
+    count = 0;
     if (i == -2147483648)
         return (11);
     if (i < 0)
@@ -71,6 +72,7 @@ int     ft_strlen_nbr_u(unsigned int u)
 {
     int count;
 
+    count = 0;
     if (u == 0)
         return (1);
     while (u > 0)

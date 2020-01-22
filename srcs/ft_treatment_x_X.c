@@ -28,7 +28,7 @@ char    *ft_treatment_x(unsigned int u)
     }
     while (i > 0)
     {
-        nbr_final[j] = base[base_conv[i - 1]];
+        nbr_final[j] = base[(int)base_conv[i - 1]];
         j++;
         i--;
     }
@@ -64,7 +64,7 @@ char    *ft_treatment_X(unsigned int u)
     }
     while (i > 0)
     {
-        nbr_final[j] = base[base_conv[i - 1]];
+        nbr_final[j] = base[(int)base_conv[i - 1]];
         j++;
         i--;
     }
