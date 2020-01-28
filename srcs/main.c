@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     str = "abcdef";
     p = str;
 
-    ft_printf("%--012.30d%d\n" , 123456789, 12);
-    printf("%--012.30d%d" , 123456789, 12);
+    ft_printf("%17.14d\n" , 123456789);
+    printf("%17.14d" , 123456789);
     return (0);
 }
