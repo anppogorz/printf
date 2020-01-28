@@ -19,6 +19,8 @@ void    ft_display(char *str, p_list flags)
 
     precision = ft_value_precision(flags, str);
     spaces = ft_value_spaces(flags, str, precision);
+    //printf("precision = %d\n", precision);
+    //printf("spaces = %d\n", spaces);
     if (flags.option == 'd')
         ft_display_d(precision, spaces, str, flags);
 }
@@ -61,11 +63,13 @@ int     ft_value_precision(p_list flags, char *str)
 
     precision = 0;
     if (flags.third == '.')
+    {
         precision = ft_atoi(flags.fourth);
-    if (precision > ft_strlen(str))
-        precision = precision - ft_strlen(str);
-    if (precision <= ft_strlen(str))
-        precision = 0;
+        if (precision > ft_strlen(str))
+            precision = precision - ft_strlen(str);
+        else
+            precision = 0;
+    }
     return (precision);
 }
 
@@ -75,10 +79,12 @@ int     ft_value_spaces(p_list flags, char *str, int precision)
 
     spaces = 0;
     if (flags.second)
+    {
         spaces = ft_atoi(flags.second);
-    if (spaces > (ft_strlen(str) + precision))
-        spaces = spaces - (ft_strlen(str) + precision);
-    if (spaces <= (ft_strlen(str) + precision))
-        spaces = 0;
+        if (spaces > (ft_strlen(str) + precision))
+            spaces = spaces - (ft_strlen(str) + precision);
+        else
+            spaces = 0;
+    }
     return (spaces);
 }
