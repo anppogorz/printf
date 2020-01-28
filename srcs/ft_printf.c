@@ -30,7 +30,7 @@ int ft_printf(const char *format, ...)
                 format = ft_skip_flags(format);
                 flags.option = *format;
                 flags = ft_check_stars(flags, ap);
-				ft_display((ft_treatment(*format, ap)), flags);
+				ft_dispatch((ft_treatment(*format, ap)), flags);
 				/*printf("first : %c\n", flags.first);
                 printf("second : %s\n", flags.second);
                 printf("third : %c\n", flags.third);

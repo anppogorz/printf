@@ -12,10 +12,10 @@ int main(int argc, char **argv)
     void *p;
     unsigned int i;
 
-    str = "abcdef";
+    str = "123456789";
     p = str;
 
-    ft_printf("%175.123d\n" , 123456789);
-    printf("%175.123d" , 123456789);
+    ft_printf("%-18.3s\n" , str);
+    printf("%-18.3s" , str);
     return (0);
 }

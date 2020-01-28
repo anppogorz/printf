@@ -12,29 +12,29 @@
 
 #include "../includes/ft_printf.h"
 
-void    ft_displayd(char *str, p_list flags)
+void    ft_displays(char *str, p_list flags)
 {
     int spaces;
     int precision;
 
-    precision = ft_value_precision_d(flags, str);
-    spaces = ft_value_spaces_d(flags, str, precision);
+    precision = ft_value_precision_s(flags, str);
+    spaces = ft_value_spaces_s(flags, str, precision);
     //printf("precision = %d\n", precision);
     //printf("spaces = %d\n", spaces);
-    if (flags.option == 'd')
-        ft_display_d(precision, spaces, str, flags);
+    if (flags.option == 's')
+        ft_display_s(precision, spaces, str, flags);
 }
 
-void    ft_display_d(int precision, int spaces, char *str, p_list flags)
+void    ft_display_s(int precision, int spaces, char *str, p_list flags)
 {
     if (flags.first == '-')
     {
         while (precision)
         {
-            ft_putchar_fd('0', 1);
+            ft_putchar_fd(*str, 1);
+            str++;
             precision--;
         }
-        ft_putstr_fd(str, 1);
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
@@ -50,30 +50,28 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
         }
         while (precision)
         {
-            ft_putchar_fd('0', 1);
+            ft_putchar_fd(*str, 1);
+            str++;
             precision--;
         }
-        ft_putstr_fd(str, 1);
     }
 }
 
-int     ft_value_precision_d(p_list flags, char *str)
+int     ft_value_precision_s(p_list flags, char *str)
 {
     int precision;
 
-    precision = 0;
+    precision = ft_strlen(str);
     if (flags.third == '.')
     {
         precision = ft_atoi(flags.fourth);
         if (precision > ft_strlen(str))
-            precision = precision - ft_strlen(str);
-        else
-            precision = 0;
+            precision = ft_strlen(str);
     }
     return (precision);
 }
 
-int     ft_value_spaces_d(p_list flags, char *str, int precision)
+int     ft_value_spaces_s(p_list flags, char *str, int precision)
 {
     int spaces;
 
@@ -81,8 +79,8 @@ int     ft_value_spaces_d(p_list flags, char *str, int precision)
     if (flags.second)
     {
         spaces = ft_atoi(flags.second);
-        if (spaces > (ft_strlen(str) + precision))
-            spaces = spaces - (ft_strlen(str) + precision);
+        if (spaces > precision)
+            spaces = spaces - precision;
         else
             spaces = 0;
     }

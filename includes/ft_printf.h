@@ -47,8 +47,11 @@ int     ft_printf(const char *format, ...);
 char	*ft_itoa_u(unsigned int n);
 const char    *ft_skip_flags(const char *s1);
 p_list  ft_check_flags(const char *format, p_list flags);
-void    ft_display(char *str, p_list flags);
+void    ft_dispatch(char *str, p_list flags);
+void    ft_displayd(char *str, p_list flags);
 void    ft_display_d(int precision, int spaces, char *str, p_list flags);
+void    ft_displays(char *str, p_list flags);
+void    ft_display_s(int precision, int spaces, char *str, p_list flags);
 p_list  ft_check_stars(p_list flags, va_list ap);
 int		ft_atoi(const char *str);
 void	ft_putchar_fd(char c, int fd);
@@ -56,8 +59,10 @@ void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 int	    ft_strncmp(const char *s1, const char *s2, size_t n);
-int     ft_value_precision(p_list flags, char *str);
-int     ft_value_spaces(p_list flags, char *str, int precision);
+int     ft_value_precision_d(p_list flags, char *str);
+int     ft_value_spaces_d(p_list flags, char *str, int precision);
+int     ft_value_precision_s(p_list flags, char *str);
+int     ft_value_spaces_s(p_list flags, char *str, int precision);
 
 
 
