@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     str = "123456789";
     p = str;
 
-    ft_printf("%-18.3s\n" , str);
-    printf("%-18.3s" , str);
+    ft_printf("%56X\n" , 123456789);
+    printf("%56X" , 123456789);
     return (0);
 }

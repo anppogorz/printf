@@ -21,7 +21,7 @@ void    ft_displays(char *str, p_list flags)
     spaces = ft_value_spaces_s(flags, str, precision);
     //printf("precision = %d\n", precision);
     //printf("spaces = %d\n", spaces);
-    if (flags.option == 's')
+    if (flags.option == 's' || flags.option == 'p' || flags.option == 'c')
         ft_display_s(precision, spaces, str, flags);
 }
 
