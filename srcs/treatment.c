@@ -33,6 +33,8 @@ char    *ft_treatment(const char c, va_list ap)
         str = (ft_x(va_arg(ap, unsigned int)));
     if (c == 'X')
         str = (ft_X(va_arg(ap, unsigned int)));
+    if (c == '%')
+        str = ft_strdup("%");
     return (str);
 }
 

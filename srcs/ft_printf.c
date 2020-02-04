@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/22 13:56:08 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 08:22:32 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ p_list  ft_check_stars(p_list flags, va_list ap)
 
 const char    *ft_skip_flags(const char *s1)
 {
-    while (*s1 != 'd' && *s1 != 'p' && *s1 != 's' && *s1 != 'c' && *s1 != 'u' && *s1 != 'i' && *s1 != 'x' && *s1 != 'X')
+    while (*s1 != 'd' && *s1 != 'p' && *s1 != 's' && *s1 != 'c' && *s1 != 'u' && *s1 != 'i' && *s1 != 'x' && *s1 != 'X'
+            && *s1 != '%')
         s1++;
     return (s1);
 }

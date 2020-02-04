@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/22 14:54:34 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 08:26:49 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void    ft_displays(char *str, p_list flags)
 
     precision = ft_value_precision_s(flags, str);
     spaces = ft_value_spaces_s(flags, str, precision);
-    //printf("precision = %d\n", precision);
-    //printf("spaces = %d\n", spaces);
-    if (flags.option == 's' || flags.option == 'p' || flags.option == 'c')
+    printf("precision = %d\n", precision);
+    printf("spaces = %d\n", spaces);
+    if (flags.option == 's' || flags.option == 'p' || flags.option == 'c' || flags.option == '%')
         ft_display_s(precision, spaces, str, flags);
+    if (flags.option )
 }
 
 void    ft_display_s(int precision, int spaces, char *str, p_list flags)
@@ -65,7 +66,7 @@ int     ft_value_precision_s(p_list flags, char *str)
     if (flags.third == '.')
     {
         precision = ft_atoi(flags.fourth);
-        if (precision > ft_strlen(str))
+        if (precision > (int)ft_strlen(str))
             precision = ft_strlen(str);
     }
     return (precision);
@@ -76,6 +77,7 @@ int     ft_value_spaces_s(p_list flags, char *str, int precision)
     int spaces;
 
     spaces = 0;
+    (void)str;
     if (flags.second)
     {
         spaces = ft_atoi(flags.second);
