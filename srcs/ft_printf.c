@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 08:22:32 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 12:17:06 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int ft_printf(const char *format, ...)
                 format = ft_skip_flags(format);
                 flags.option = *format;
                 flags = ft_check_stars(flags, ap);
-				ft_dispatch((ft_treatment(*format, ap)), flags);
+                ft_dispatch((ft_treatment(*format, ap)), flags);
 				/*printf("first : %c\n", flags.first);
                 printf("second : %s\n", flags.second);
                 printf("third : %c\n", flags.third);
@@ -47,10 +47,24 @@ int ft_printf(const char *format, ...)
 
 p_list  ft_check_stars(p_list flags, va_list ap)
 {
+    int second;
+    int fourth;
+
     if (ft_strncmp(flags.second, "*", 1) == 0)
-        flags.second = ft_itoa(va_arg(ap, int));
+    {
+        second = (va_arg(ap, int));
+        if (second < 0)
+        {
+            second = -second;
+            flags.first = '-';
+        }
+        flags.second = ft_itoa(second);
+    }
     if (ft_strncmp(flags.fourth, "*", 1) == 0)
-        flags.fourth = ft_itoa(va_arg(ap, int));
+    {
+        fourth = (va_arg(ap, int));
+        flags.fourth = ft_itoa(fourth);
+    }
     return (flags);
 }
 
@@ -95,9 +109,9 @@ char    *ft_pass_nbr(const char *format)
 
 p_list  ft_check_flags(const char *format, p_list flags)
 {
-    flags.first = 48;
+    flags.first = '\0';
     flags.second = "\0";
-    flags.third = 48;
+    flags.third = '\0';
     flags.fourth = "\0";
     while (*format == '-' || *format == '0')
     {

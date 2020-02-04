@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:10 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/21 07:12:24 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 09:26:42 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void    ft_displayd(char *str, p_list flags);
 void    ft_display_d(int precision, int spaces, char *str, p_list flags);
 void    ft_displays(char *str, p_list flags);
 void    ft_display_s(int precision, int spaces, char *str, p_list flags);
+void    ft_display_pourcent(int precision, int spaces, char *str, p_list flags);
 p_list  ft_check_stars(p_list flags, va_list ap);
 int		ft_atoi(const char *str);
 void	ft_putchar_fd(char c, int fd);
