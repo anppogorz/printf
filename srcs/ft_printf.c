@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 12:17:06 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:07 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ int ft_printf(const char *format, ...)
                 printf("third : %c\n", flags.third);
                 printf("fourth : %s\n", flags.fourth);
                 printf("option : %c\n", flags.option);*/
-				format++;
+                format++;
 			}
-			ft_putchar_fd(*format, 1);
-			format++;
+	        ft_putchar_fd(*format, 1);
+	        if (*format != '\0')
+			    format++;
 		}
 	va_end (ap);
 	return (0);

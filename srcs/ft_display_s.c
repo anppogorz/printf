@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 12:16:37 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:35:06 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void    ft_displays(char *str, p_list flags)
     int spaces;
     int precision;
 
+
     precision = ft_value_precision_s(flags, str);
     spaces = ft_value_spaces_s(flags, str, precision);
-    //printf("precision = %d\n", precision);
-    //printf("spaces = %d\n", spaces);
+    printf("precision = %d\n", precision);
+    printf("spaces = %d\n", spaces);
     if (flags.option == 's' || flags.option == 'p' || flags.option == 'c')
         ft_display_s(precision, spaces, str, flags);
     if (flags.option == '%')
@@ -115,7 +116,7 @@ int     ft_value_precision_s(p_list flags, char *str)
         if (precision > (int)ft_strlen(str))
             precision = ft_strlen(str);
     }
-    if (precision < 0)
+    if (precision <= 0)
         precision = ft_strlen(str);
     return (precision);
 }

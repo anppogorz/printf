@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 11:39:18 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:50:27 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,27 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
             spaces--;
         }
     }
+    /*else if (flags.first == '0')
+    {
+        {
+            while (spaces)
+            {
+                ft_putchar_fd('0', 1);
+                spaces--;
+            }
+            if (*str == '-')
+            {
+                ft_putchar_fd('-', 1);
+                str++;
+            }
+            while (precision)
+            {
+                ft_putchar_fd('0', 1);
+                precision--;
+            }
+            ft_putstr_fd(str, 1);
+        }
+    }*/
     else
     {
         while (spaces)
