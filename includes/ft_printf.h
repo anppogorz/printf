@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:10 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 09:26:42 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/05 11:19:39 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int     ft_value_precision_d(p_list flags, char *str);
 int     ft_value_spaces_d(p_list flags, char *str, int precision);
 int     ft_value_precision_s(p_list flags, char *str);
 int     ft_value_spaces_s(p_list flags, char *str, int precision);
+int     ft_value_precision_pourcent(p_list flags, char *str);
+void    ft_display_c(int precision, int spaces, char *str, p_list flags);
 
 
 

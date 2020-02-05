@@ -14,7 +14,8 @@ int main(int argc, char **argv)
 
     str = "123456789";
     p = str;
-    ft_printf("%00097.*u|\n" ,-18,692442331u);
-    printf("%00097.*u" ,-18,692442331u);
+    //ft_printf("%-92.9%%-151.s|\n" ,"ED&1\n#8oun{J4ca-c=$#~");
+    ft_printf("%97c|\n" ,0);
+    printf("%97c" ,0);
     return (0);
 }
