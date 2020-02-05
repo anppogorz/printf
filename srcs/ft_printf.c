@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:07 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/05 08:20:39 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int ft_printf(const char *format, ...)
                 format = ft_skip_flags(format);
                 flags.option = *format;
                 flags = ft_check_stars(flags, ap);
+                //flags.fourth = "0";
                 ft_dispatch((ft_treatment(*format, ap)), flags);
 				/*printf("first : %c\n", flags.first);
                 printf("second : %s\n", flags.second);

@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/04 14:50:27 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/05 08:26:44 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
             spaces--;
         }
     }
-    /*else if (flags.first == '0')
+    else if ((flags.first == '0' && flags.third != '.') || (flags.first == '0' && (flags.fourth[0] == '-' || flags.fourth[0] == '0')))
     {
         {
             while (spaces)
@@ -67,7 +67,7 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
             }
             ft_putstr_fd(str, 1);
         }
-    }*/
+    }
     else
     {
         while (spaces)
