@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/05 11:37:15 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:41:07 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void    ft_display_c(int precision, int spaces, char *str, p_list flags)
 {
     if (str[0] == '\0')
     {
-        ft_putchar_fd('\0', 1);
-        return ;
+        spaces = spaces - 1;
+        precision = precision + 1;
     }
     if (flags.first == '-')
     {

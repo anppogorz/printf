@@ -14,8 +14,8 @@ int main(int argc, char **argv)
 
     str = "123456789";
     p = str;
-    //ft_printf("%-92.9%%-151.s|\n" ,"ED&1\n#8oun{J4ca-c=$#~");
-    ft_printf("%97c|\n" ,0);
-    printf("%97c" ,0);
+    printf("%-146c|\n" ,0);
+    ft_printf("%-146c" ,0);
+    //printf("%-146c", 0);
     return (0);
 }
