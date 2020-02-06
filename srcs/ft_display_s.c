@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/06 11:19:20 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 11:20:22 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,7 @@ int    ft_displays(char *str, p_list flags)
 int    ft_display_s(int precision, int spaces, char *str, p_list flags)
 {
     if (flags.first == '-')
-    {
-        while (precision)
-        {
-            ft_putchar_fd(*str, 1);
-            flags.count++;
-            str++;
-            precision--;
-        }
-        while (spaces)
-        {
-            ft_putchar_fd(' ', 1);
-            flags.count++;
-            spaces--;
-        }
-    }
+        flags.count = ft_display_s_minus(spaces, precision, str, flags);
     else
     {
         while (spaces)
@@ -67,6 +53,24 @@ int    ft_display_s(int precision, int spaces, char *str, p_list flags)
             str++;
             precision--;
         }
+    }
+    return (flags.count);
+}
+
+int ft_display_s_minus(int spaces, int precision, char *str, p_list flags)
+{
+    while (precision)
+    {
+        ft_putchar_fd(*str, 1);
+        flags.count++;
+        str++;
+        precision--;
+    }
+    while (spaces)
+    {
+        ft_putchar_fd(' ', 1);
+        flags.count++;
+        spaces--;
     }
     return (flags.count);
 }

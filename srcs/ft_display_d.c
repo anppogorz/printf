@@ -19,11 +19,7 @@ int    ft_displayd(char *str, p_list flags)
 
     precision = ft_value_precision_d(flags, str);
     spaces = ft_value_spaces_d(flags, str, precision);
-    //printf("precision = %d\n", precision);
-    //printf("spaces = %d\n", spaces);
-    //printf("str = %s\n", str);
-    if (flags.option == 'd' || flags.option == 'i' || flags.option == 'u' || flags.option == 'x' || flags.option == 'X')
-        flags.count = ft_display_d(precision, spaces, str, flags);
+    flags.count = ft_display_d(precision, spaces, str, flags);
     return (flags.count);
 }
 
