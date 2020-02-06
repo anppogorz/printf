@@ -6,13 +6,13 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/05 11:34:00 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 07:14:57 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void    ft_displayd(char *str, p_list flags)
+int    ft_displayd(char *str, p_list flags)
 {
     int spaces;
     int precision;
@@ -23,27 +23,32 @@ void    ft_displayd(char *str, p_list flags)
     //printf("spaces = %d\n", spaces);
     //printf("str = %s\n", str);
     if (flags.option == 'd' || flags.option == 'i' || flags.option == 'u' || flags.option == 'x' || flags.option == 'X')
-        ft_display_d(precision, spaces, str, flags);
+        flags.count = ft_display_d(precision, spaces, str, flags);
+    return (flags.count);
 }
 
-void    ft_display_d(int precision, int spaces, char *str, p_list flags)
+int    ft_display_d(int precision, int spaces, char *str, p_list flags)
 {
     if (flags.first == '-')
     {
         if (*str == '-')
         {
             ft_putchar_fd('-', 1);
+            flags.count++;
             str++;
         }
         while (precision)
         {
             ft_putchar_fd('0', 1);
+            flags.count++;
             precision--;
         }
         ft_putstr_fd(str, 1);
+        flags.count = flags.count + ft_strlen(str);
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
     }
@@ -53,24 +58,29 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
             if (*str == '-' && (flags.fourth[0] == '-' || flags.fourth[0] == '\0'))
             {
                 ft_putchar_fd('-', 1);
+                flags.count++;
                 str++;
             }
             while (spaces)
             {
                 ft_putchar_fd('0', 1);
+                flags.count++;
                 spaces--;
             }
             if (*str == '-' && (flags.fourth[0] != '-' || flags.fourth[0] != '\0'))
             {
                 ft_putchar_fd('-', 1);
+                flags.count++;
                 str++;
             }
             while (precision)
             {
                 ft_putchar_fd('0', 1);
+                flags.count++;
                 precision--;
             }
             ft_putstr_fd(str, 1);
+            flags.count = flags.count + ft_strlen(str);
         }
     }
     else
@@ -78,20 +88,25 @@ void    ft_display_d(int precision, int spaces, char *str, p_list flags)
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
         if (*str == '-')
         {
             ft_putchar_fd('-', 1);
+            flags.count++;
             str++;
         }
         while (precision)
         {
             ft_putchar_fd('0', 1);
+            flags.count++;
             precision--;
         }
         ft_putstr_fd(str, 1);
+        flags.count = flags.count + ft_strlen(str);
     }
+    return (flags.count);
 }
 
 int     ft_value_precision_d(p_list flags, char *str)

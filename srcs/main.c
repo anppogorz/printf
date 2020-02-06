@@ -14,8 +14,8 @@ int main(int argc, char **argv)
 
     str = "123456789";
     p = str;
-    printf("%-146c|\n" ,0);
-    ft_printf("%-146c" ,0);
+    printf("printf = %d\n", printf("%-*p%-167p%81c" ,122,(void*)13937049508044434163lu,(void*)11696584541373051259lu,-125));
+    printf("ft_printf = %d\n", ft_printf("%-*p%-167p%81c" ,122,(void*)13937049508044434163lu,(void*)11696584541373051259lu,-125));
     //printf("%-146c", 0);
     return (0);
 }

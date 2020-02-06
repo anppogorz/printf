@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:10 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/05 11:19:39 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 07:57:15 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct  printf_list
     char third;
     char *fourth;
     char option;
+    int count;
 }               p_list;
 
 char    *ft_treatment(const char c, va_list ap);
@@ -47,16 +48,17 @@ int     ft_printf(const char *format, ...);
 char	*ft_itoa_u(unsigned int n);
 const char    *ft_skip_flags(const char *s1);
 p_list  ft_check_flags(const char *format, p_list flags);
-void    ft_dispatch(char *str, p_list flags);
-void    ft_displayd(char *str, p_list flags);
-void    ft_display_d(int precision, int spaces, char *str, p_list flags);
-void    ft_displays(char *str, p_list flags);
-void    ft_display_s(int precision, int spaces, char *str, p_list flags);
-void    ft_display_pourcent(int precision, int spaces, char *str, p_list flags);
+int    ft_dispatch(char *str, p_list flags);
+
+int       ft_displayd(char *str, p_list flags);
+int   ft_display_d(int precision, int spaces, char *str, p_list flags);
+int  ft_displays(char *str, p_list flags);
+int  ft_display_s(int precision, int spaces, char *str, p_list flags);
+int  ft_display_pourcent(int precision, int spaces, char *str, p_list flags);
 p_list  ft_check_stars(p_list flags, va_list ap);
 int		ft_atoi(const char *str);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void    ft_putchar_fd(char c, int fd);
+void    ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 int	    ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -65,7 +67,8 @@ int     ft_value_spaces_d(p_list flags, char *str, int precision);
 int     ft_value_precision_s(p_list flags, char *str);
 int     ft_value_spaces_s(p_list flags, char *str, int precision);
 int     ft_value_precision_pourcent(p_list flags, char *str);
-void    ft_display_c(int precision, int spaces, char *str, p_list flags);
+int    ft_display_c(int precision, int spaces, char *str, p_list flags);
+p_list  flags_init(const char* format);
 
 
 

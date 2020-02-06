@@ -1,9 +1,10 @@
 #include "../includes/ft_printf.h"
 
-void    ft_dispatch(char *str, p_list flags)
+int    ft_dispatch(char *str, p_list flags)
 {
     if (flags.option == 'd' || flags.option == 'i' || flags.option == 'u' || flags.option == 'x' || flags.option == 'X')
-        ft_displayd(str, flags);
+        flags.count = ft_displayd(str, flags);
     if (flags.option == 's' || flags.option == 'c' || flags.option == 'p' || flags.option == '%')
-        ft_displays(str, flags);
+        flags.count = ft_displays(str, flags);
+    return (flags.count);
 }

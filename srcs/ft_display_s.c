@@ -6,13 +6,13 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 07:25:55 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/05 13:41:07 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 07:21:12 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void    ft_displays(char *str, p_list flags)
+int    ft_displays(char *str, p_list flags)
 {
     int spaces;
     int precision;
@@ -25,30 +25,34 @@ void    ft_displays(char *str, p_list flags)
     printf("spaces = %d\n", spaces);
     printf("str = %s\n", str);*/
     if (flags.option == 's' || flags.option == 'p')
-        ft_display_s(precision, spaces, str, flags);
+        flags.count = ft_display_s(precision, spaces, str, flags);
     if (flags.option == 'c')
-        ft_display_c(precision, spaces, str, flags);
+        flags.count = ft_display_c(precision, spaces, str, flags);
     if (flags.option == '%')
     {
         precision = ft_value_precision_pourcent(flags, str);
         //printf("precision = %d\n", precision);
         spaces = ft_value_spaces_s(flags, str, precision);
-        ft_display_pourcent(precision, spaces, str, flags);
+        flags.count = ft_display_pourcent(precision, spaces, str, flags);
     }
+    return (flags.count);
 }
-void    ft_display_pourcent(int precision, int spaces, char *str, p_list flags)
+
+int    ft_display_pourcent(int precision, int spaces, char *str, p_list flags)
 {
     if (flags.first == '-')
     {
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
     }
@@ -57,11 +61,13 @@ void    ft_display_pourcent(int precision, int spaces, char *str, p_list flags)
         while (spaces)
         {
             ft_putchar_fd('0', 1);
+            flags.count++;
             spaces--;
         }
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
@@ -71,18 +77,21 @@ void    ft_display_pourcent(int precision, int spaces, char *str, p_list flags)
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
     }
+    return (flags.count);
 }
 
-void    ft_display_c(int precision, int spaces, char *str, p_list flags)
+int    ft_display_c(int precision, int spaces, char *str, p_list flags)
 {
     if (str[0] == '\0')
     {
@@ -94,12 +103,14 @@ void    ft_display_c(int precision, int spaces, char *str, p_list flags)
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
     }
@@ -108,30 +119,35 @@ void    ft_display_c(int precision, int spaces, char *str, p_list flags)
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
     }
+    return (flags.count);
 }
 
-void    ft_display_s(int precision, int spaces, char *str, p_list flags)
+int    ft_display_s(int precision, int spaces, char *str, p_list flags)
 {
     if (flags.first == '-')
     {
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
     }
@@ -140,15 +156,18 @@ void    ft_display_s(int precision, int spaces, char *str, p_list flags)
         while (spaces)
         {
             ft_putchar_fd(' ', 1);
+            flags.count++;
             spaces--;
         }
         while (precision)
         {
             ft_putchar_fd(*str, 1);
+            flags.count++;
             str++;
             precision--;
         }
     }
+    return (flags.count);
 }
 
 int     ft_value_precision_s(p_list flags, char *str)
