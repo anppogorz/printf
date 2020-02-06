@@ -14,7 +14,7 @@ SRCS	= ./srcs/ft_atoi.c ./srcs/ft_dispatch.c ./srcs/ft_display_d.c \
           ./srcs/ft_display_s.c ./srcs/ft_itoa.c ./srcs/ft_itoa_u.c \
           ./srcs/ft_printf.c ./srcs/ft_printf_utils.c \
           ./srcs/ft_treatment_c_s_p_d.c ./srcs/ft_treatment_x_X.c \
-		  ./srcs/treatment.c
+		  ./srcs/treatment.c ./srcs/flags_utils.c
 
 OBJS	= ${SRCS:.c=.o}
 
