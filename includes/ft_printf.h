@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:10 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/06 09:40:02 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 11:11:02 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ typedef struct  printf_list
 char    *ft_treatment(const char c, va_list ap);
 char    *ft_c(int i);
 char    *ft_p(void *ptr);
-char    *ft_treatment_p(void *ptr);
+char    *ft_treatment_p(void *ptr, char *base, char *nbr_final, int i);
 char    *ft_x(unsigned int u);
-char    *ft_treatment_x(unsigned int u, char* base, char* nbr_final);
+char    *ft_treatment_x(unsigned int u, char *base, char *nbr_final);
 char    *ft_X(unsigned int u);
-char    *ft_treatment_X(unsigned int u, char* base, char* nbr_final);
+char    *ft_treatment_X(unsigned int u, char *base, char *nbr_final);
 int     ft_strlen_nbr(int i);
 int     ft_strlen_nbr_u(unsigned int u);
 char    *ft_itoa(int n);
@@ -64,9 +64,14 @@ int     ft_value_precision_s(p_list flags, char *str);
 int     ft_value_spaces_s(p_list flags, char *str, int precision);
 int     ft_value_precision_pourcent(p_list flags, char *str);
 int    ft_display_c(int precision, int spaces, char *str, p_list flags);
-p_list  flags_init(const char* format);
+p_list  flags_init(const char *format);
 char	*ft_strdup_num(const char *s1);
 char    *ft_pass_nbr(const char *format);
+int ft_display_pourcent_0(int spaces, int precision, char *str, p_list flags);
+int ft_display_pourcent_minus(int spaces, int precision, char *str, p_list flags);
+int     ft_value_precision_s(p_list flags, char *str);
+int ft_display_c_minus(int spaces, int precision, char *str, p_list flags);
+
 
 
 

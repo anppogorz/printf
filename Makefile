@@ -6,7 +6,7 @@
 #    By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 08:26:03 by anpogorz          #+#    #+#              #
-#    Updated: 2020/01/22 09:04:46 by anpogorz         ###   ########.fr        #
+#    Updated: 2020/02/06 11:16:12 by anpogorz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ SRCS	= ./srcs/ft_atoi.c ./srcs/ft_dispatch.c ./srcs/ft_display_d.c \
           ./srcs/ft_display_s.c ./srcs/ft_itoa.c ./srcs/ft_itoa_u.c \
           ./srcs/ft_printf.c ./srcs/ft_printf_utils.c \
           ./srcs/ft_treatment_c_s_p_d.c ./srcs/ft_treatment_x_X.c \
-		  ./srcs/treatment.c ./srcs/flags_utils.c
+		  ./srcs/treatment.c ./srcs/flags_utils.c ./srcs/ft_display_pourcent.c \
+		  ./srcs/ft_display_c.c
 
 OBJS	= ${SRCS:.c=.o}
 

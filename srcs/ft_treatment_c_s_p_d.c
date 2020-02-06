@@ -13,22 +13,24 @@ char    *ft_c(int i)
 
 char    *ft_p(void *ptr)
 {
-    return (ft_treatment_p(ptr));
-}
-
-char    *ft_treatment_p(void *ptr)
-{
     char *base;
     char *nbr_final;
-    char base_conv[100];
-    uintptr_t nbr;
     int i;
-    int j;
 
+    i = 0;
     if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
         return (NULL);
     base = "0123456789abcdef";
-    i = 0;
+
+    return (ft_treatment_p(ptr, base, nbr_final, i));
+}
+
+char    *ft_treatment_p(void *ptr, char *base, char *nbr_final, int i)
+{
+    char base_conv[100];
+    uintptr_t nbr;
+    int j;
+
     j = 2;
     nbr = (uintptr_t)ptr;
     if (nbr == 0)
