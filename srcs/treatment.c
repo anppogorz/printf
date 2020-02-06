@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:28 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/01/21 07:04:08 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 08:53:54 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ char    *ft_treatment(const char c, va_list ap)
     if (c == 'c')
         str = (ft_c(va_arg(ap, int)));
     if (c == 's')
-        str = (ft_s(va_arg(ap, char *)));
+        str = va_arg(ap, char *);
     if (c == 'p')
         str = (ft_p(va_arg(ap, void *)));
     if (c == 'd')
-        str = (ft_d(va_arg(ap, int)));
+        str = ft_itoa(va_arg(ap, int));
     if (c == 'i')
-        str = (ft_i(va_arg(ap, int)));
+        str = ft_itoa(va_arg(ap, int));
     if (c == 'u')
-        str = (ft_u(va_arg(ap, unsigned int)));
+        str = ft_itoa_u(va_arg(ap, unsigned int));
     if (c == 'x')
         str = (ft_x(va_arg(ap, unsigned int)));
     if (c == 'X')
@@ -36,16 +36,6 @@ char    *ft_treatment(const char c, va_list ap)
     if (c == '%')
         str = ft_strdup("%");
     return (str);
-}
-
-char    *ft_i(int i)
-{
-    return (ft_itoa(i));
-}
-
-char    *ft_u(unsigned int u)
-{
-    return (ft_itoa_u(u));
 }
 
 int     ft_strlen_nbr(int i)

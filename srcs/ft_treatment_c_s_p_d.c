@@ -11,11 +11,6 @@ char    *ft_c(int i)
     return (str);
 }
 
-char    *ft_s(char *str)
-{
-    return (str);
-}
-
 char    *ft_p(void *ptr)
 {
     return (ft_treatment_p(ptr));
@@ -54,9 +49,4 @@ char    *ft_treatment_p(void *ptr)
     }
     nbr_final[j] = '\0';
     return (nbr_final);
-}
-
-char    *ft_d(int i)
-{
-    return (ft_itoa(i));
 }

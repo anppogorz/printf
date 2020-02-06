@@ -6,7 +6,7 @@
 /*   By: anpogorz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 15:31:21 by anpogorz          #+#    #+#             */
-/*   Updated: 2020/02/06 08:10:34 by anpogorz         ###   ########.fr       */
+/*   Updated: 2020/02/06 08:48:55 by anpogorz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int ft_printf(const char *format, ...)
 	va_end (ap);
 	return (flags.count);
 }
+
+/*char    *ft_free(char* str)
+{
+        free(*str);
+        return (str);
+}*/
 
 char	*ft_strdup_num(const char *s1)
 {

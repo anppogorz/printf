@@ -2,20 +2,20 @@
 
 char    *ft_x(unsigned int u)
 {
-    return(ft_treatment_x(u));
-}
-
-char    *ft_treatment_x(unsigned int u)
-{
     char *base;
     char *nbr_final;
+    if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
+        return (NULL);
+    base = "0123456789abcdef";
+    return(ft_treatment_x(u, base, nbr_final));
+}
+
+char    *ft_treatment_x(unsigned int u, char* base, char* nbr_final)
+{
     char base_conv[100];
     int i;
     int j;
 
-    if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
-        return (NULL);
-    base = "0123456789abcdef";
     i = 0;
     j = 0;
     if (u == 0)
@@ -37,21 +37,21 @@ char    *ft_treatment_x(unsigned int u)
 }
 
 char    *ft_X(unsigned int u)
-{;
-    return (ft_treatment_X(u));
-}
-
-char    *ft_treatment_X(unsigned int u)
 {
     char *base;
     char *nbr_final;
+    if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
+        return (NULL);
+    base = "0123456789ABCDEF";
+    return (ft_treatment_X(u, base, nbr_final));
+}
+
+char    *ft_treatment_X(unsigned int u, char* base, char* nbr_final)
+{
     char base_conv[100];
     int i;
     int j;
 
-    if (!(nbr_final = (char *)malloc(sizeof(char) * 50)))
-        return (NULL);
-    base = "0123456789ABCDEF";
     i = 0;
     j = 0;
     if (u == 0)
